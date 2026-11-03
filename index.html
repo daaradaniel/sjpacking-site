@@ -81,7 +81,7 @@ body[data-mkf="off"] #makerGroup{display:none!important}
 .site-header.scrolled .nav{color:#3A3D41}
 .site-header.scrolled .logo-sub{color:var(--mute)}
 .site-header.scrolled .head-cta{border-color:var(--line);color:var(--text)}
-.logo{display:flex;align-items:center;margin-right:auto;flex-shrink:0}
+.logo{display:flex;gap:5px;align-items:center;margin-right:auto;flex-shrink:0}
 .site-header.scrolled .logo-img{filter:invert(1)}
 .logo-img{height:44px;width:auto;display:block}
 .logo-mark{width:36px;height:36px;border:1.5px solid currentColor;display:grid;place-items:center;font-family:var(--f-latin);font-stretch:80%;font-weight:700;font-size:15px;position:relative}
@@ -1248,7 +1248,7 @@ body[data-page="resources"] #resources,body[data-page="support"] #support{displa
 <header class="site-header">
   <div class="wrap bar">
     <a href="#top" class="logo" aria-label="홈">
-      <span class="logo-mark">DJ</span>
+      <span class="logo-mark" data-bind="initials">DJ</span>
       <span><span class="logo-name" data-bind="name">에스제이패킹</span><span class="logo-sub" style="display:block">SJ PACKING</span></span>
     </a>
     <nav class="nav" aria-label="주 메뉴">
@@ -1920,8 +1920,10 @@ $$('[data-metric]').forEach(el => {
 });
 
 /* ---------- 바인딩 & 마퀴 ---------- */
+function setInitials(v){ const s=String(v||'').toUpperCase(); const t=s.replace(/[^A-Z]/g,'').slice(0,2) || s.replace(/\s+/g,'').slice(0,2); if(t) $$('[data-bind="initials"]').forEach(e=>e.textContent=t); }
 $$('[data-bind="tel"]').forEach(e => e.textContent = SITE.tel);
 $$('[data-bind="feng"]').forEach(e => e.textContent = SITE.feng);
+setInitials(SITE.feng);
 $$('.vin[data-video="feng"]').forEach(i => { if (!i.value) i.value = SITE.feng; });
 $$('[data-marquee]').forEach(el => {
   const items = SITE[el.dataset.marquee];
@@ -2177,6 +2179,7 @@ function apply() {
   const sig = state.cnt + '|' + state.since;
   if (sig !== statsSig) { statsSig = sig; renderStats(); syncCntChecks(); }
   $$('[data-bind="feng"]').forEach(el => el.textContent = state.feng);
+  setInitials(state.feng);
   B.style.setProperty('--hero-dim', (parseFloat(state.herodim) || 0) / 100);
   const r = $('[data-range="herodim"]'); if (r) { r.value = state.herodim; const rv = $('[data-rangeval]'); if (rv) rv.textContent = state.herodim + '%'; }
   const ci = $('#heroC .cbg img');
@@ -2215,7 +2218,7 @@ $('#bld').addEventListener('click', e => {
   $('#bldStatus').textContent = '미리보기에 반영했습니다.';
 });
 $('#bld').addEventListener('input', e => { const r = e.target.closest('[data-range]'); if (!r) return; state[r.dataset.range] = r.value; apply(); });
-function updateBuilderInput(e) { const v = e.target.closest('[data-video]'); if (!v) return; const value = v.value.trim(); if (state[v.dataset.video] === value) return; state[v.dataset.video] = value; if (v.dataset.video === 'feng') $$('[data-bind="feng"]').forEach(x => x.textContent = value); apply(); if (v.dataset.video === 'herovid') setHeroVideo(state.herovid); }
+function updateBuilderInput(e) { const v = e.target.closest('[data-video]'); if (!v) return; const value = v.value.trim(); if (state[v.dataset.video] === value) return; state[v.dataset.video] = value; if (v.dataset.video === 'feng') { $$('[data-bind="feng"]').forEach(x => x.textContent = value); setInitials(value); } apply(); if (v.dataset.video === 'herovid') setHeroVideo(state.herovid); }
 $('#bld').addEventListener('input', updateBuilderInput);
 $('#bld').addEventListener('change', updateBuilderInput);
 function applyAccentInput() {
