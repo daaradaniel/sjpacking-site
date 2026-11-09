@@ -1238,12 +1238,13 @@ body[data-page="resources"] #resources,body[data-page="support"] #support{displa
 .pdb-thumbs button{aspect-ratio:1/1}
 
 /* E22 · 전체 제품 리스트 타입 — 카드형(기본) / 가로 카드형(2열×4행) / 리스트형(전체 행) */
-.grid4.hz{grid-template-columns:repeat(2,1fr);gap:36px 28px}
-.card.hz{display:grid;grid-template-columns:clamp(190px,26%,250px) minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:22px;row-gap:0}
-.card.hz .im{grid-column:1;grid-row:1/4;aspect-ratio:auto;height:100%;min-height:170px}
-.card.hz .t{grid-column:2;grid-row:1;margin-top:4px}
-.card.hz .s{grid-column:2;grid-row:2;margin-top:10px}
-.card.hz .f{grid-column:2;grid-row:3;margin-top:auto;padding-top:14px}
+.grid4.hz{grid-template-columns:repeat(2,1fr);gap:24px}
+.card.hz{display:grid;grid-template-columns:clamp(180px,27%,240px) minmax(0,1fr);grid-template-rows:auto auto 1fr;border:1px solid var(--line);background:#fff}
+.card.hz .im{grid-column:1;grid-row:1/4;aspect-ratio:auto;height:100%;min-height:176px;overflow:hidden;background:var(--paper-3)}
+.card.hz .t{grid-column:2;grid-row:1;margin:18px 22px 0 20px}
+.card.hz .s{grid-column:2;grid-row:2;margin:8px 22px 0 20px}
+.card.hz .f{grid-column:2;grid-row:3;margin:14px 22px 18px 20px;padding-top:0;border-top:0}
+.card.hz:hover{border-color:var(--mute)}
 .plist{display:block;margin-top:40px;border-top:1px solid var(--line)}
 .lrow{display:grid;grid-template-columns:clamp(64px,7vw,92px) minmax(0,1fr) auto;align-items:center;column-gap:18px;padding:16px 0;border-bottom:1px solid var(--line);cursor:pointer}
 .lrow .lthumb{position:relative;display:block;overflow:hidden;background:var(--paper-3);aspect-ratio:1/1}
