@@ -1237,6 +1237,34 @@ body[data-page="resources"] #resources,body[data-page="support"] #support{displa
 .pdb-thumbs{grid-template-columns:repeat(auto-fill,clamp(84px,13vw,140px));justify-content:start}
 .pdb-thumbs button{aspect-ratio:1/1}
 
+/* E22 · 전체 제품 리스트 타입 — 카드형(기본) / 가로 카드형(2열×4행) / 리스트형(전체 행) */
+.grid4.hz{grid-template-columns:repeat(2,1fr);gap:36px 28px}
+.card.hz{display:grid;grid-template-columns:clamp(190px,26%,250px) minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:22px;row-gap:0}
+.card.hz .im{grid-column:1;grid-row:1/4;aspect-ratio:auto;height:100%;min-height:170px}
+.card.hz .t{grid-column:2;grid-row:1;margin-top:4px}
+.card.hz .s{grid-column:2;grid-row:2;margin-top:10px}
+.card.hz .f{grid-column:2;grid-row:3;margin-top:auto;padding-top:14px}
+.plist{display:block;margin-top:40px;border-top:1px solid var(--line)}
+.lrow{display:grid;grid-template-columns:clamp(64px,7vw,92px) minmax(0,1fr) auto;align-items:center;column-gap:18px;padding:16px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.lrow .lthumb{position:relative;display:block;overflow:hidden;background:var(--paper-3);aspect-ratio:1/1}
+.lrow .lthumb img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.lrow:hover .lthumb img{transform:scale(1.05)}
+.lrow .cond{position:absolute;left:8px;top:8px;background:var(--accent);color:var(--accent-ink);font:600 10px/1 var(--f-latin);font-stretch:85%;letter-spacing:.1em;padding:4px 7px;text-transform:uppercase;z-index:1}
+.lrow .lmain{display:flex;flex-direction:column;gap:5px;min-width:0}
+.lrow .lmain b{font:600 20px/1.15 var(--f-latin);font-stretch:80%;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lrow .ls{font-size:13px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lrow .lmeta{font:500 11px var(--f-latin);font-stretch:85%;letter-spacing:.12em;color:var(--mute);text-transform:uppercase}
+.lrow .lside{display:flex;align-items:center;gap:14px;justify-self:end}
+.lrow .ldate{font:400 12px var(--f-mono);color:var(--mute)}
+.lrow .lside button{font-weight:500;color:var(--text);font-size:13px;white-space:nowrap}
+.lrow .lside button:hover{color:var(--accent-text)}
+@media (max-width:900px){.grid4.hz{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .card.hz{grid-template-columns:132px minmax(0,1fr);column-gap:14px}
+  .lrow{grid-template-columns:56px minmax(0,1fr);row-gap:8px;padding:14px 0}
+  .lrow .lside{grid-column:1/-1;justify-self:start}
+}
+
 .skip-content{position:fixed;left:16px;top:-80px;z-index:20000;padding:12px 18px;background:#fff;color:#0e1114;border:2px solid currentColor}.skip-content:focus{top:12px}
 .catalog-index{max-width:1280px;margin:40px auto 0;padding:24px 0;border-top:1px solid #cdd1d5;color:var(--text)}.catalog-index h2{font-size:18px;margin-bottom:8px}.catalog-index p{font-size:14px;color:#51565d}.catalog-index ul{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;padding:18px 0 0}.catalog-index a{font-size:14px;text-decoration:underline;text-underline-offset:4px}a[data-pdopen]{display:block;color:inherit;text-decoration:none}
 </style></head>
@@ -1837,7 +1865,7 @@ body[data-page="resources"] #resources,body[data-page="support"] #support{displa
   <details class="bsec" data-view="home"><summary>대표 제품<span class="bsum" data-sum="spot"></span></summary><div class="bbody"><div class="grp"><div class="gl">표시 여부</div><div class="seg" data-opt="spot"><button data-v="on">표시</button><button data-v="off">숨김</button></div></div></div></details>
   <details class="bsec" data-view="home"><summary>주요 제품<span class="bsum" data-sum="main,maindark"></span></summary><div class="bbody"><div class="grp"><div class="gl">레이아웃</div><div class="seg" data-opt="main"><button data-v="3">3개 · 지그재그</button><button data-v="4">4개+ 캐러셀</button></div></div><div class="grp"><div class="gl">테마</div><div class="seg" data-opt="maindark"><button data-v="on">다크</button><button data-v="off">라이트</button></div></div></div></details>
   <details class="bsec" data-view="home"><summary>카테고리<span class="bsum" data-sum="cat"></span></summary><div class="bbody"><div class="grp"><div class="gl">타입</div><div class="seg" data-opt="cat"><button data-v="1">1 리스트</button><button data-v="2">2 카드</button><button data-v="3">3 다크</button><button data-v="4">4 이미지</button></div></div></div></details>
-  <details class="bsec" data-view="home"><summary>전체 제품<span class="bsum" data-sum="condf,mkf"></span></summary><div class="bbody"><div class="grp"><div class="gl">필터</div><div style="display:flex;gap:8px"><div class="seg" data-opt="condf" style="flex:1"><button data-v="on">구분 표시</button><button data-v="off">숨김</button></div><div class="seg" data-opt="mkf" style="flex:1"><button data-v="on">제조사 표시</button><button data-v="off">숨김</button></div></div></div></div></details>
+  <details class="bsec" data-view="home"><summary>전체 제품<span class="bsum" data-sum="plist,condf,mkf"></span></summary><div class="bbody"><div class="grp"><div class="gl">제품 리스트</div><div class="seg" data-opt="plist"><button data-v="card">카드형</button><button data-v="hcard">가로 카드형</button><button data-v="list">리스트형</button></div><p class="bhelp">카드형 4열 · 가로 카드형 2열×4행 · 리스트형은 조건에 맞는 전체 제품을 한 줄씩 표시합니다.</p></div><div class="grp"><div class="gl">필터</div><div style="display:flex;gap:8px"><div class="seg" data-opt="condf" style="flex:1"><button data-v="on">구분 표시</button><button data-v="off">숨김</button></div><div class="seg" data-opt="mkf" style="flex:1"><button data-v="on">제조사 표시</button><button data-v="off">숨김</button></div></div></div></div></details>
   <details class="bsec" data-scope="product" open><summary>제품 레이아웃<span class="bsum" data-sum="pd,pdmode,alPd1"></span></summary><div class="bbody">
     <div class="grp"><div class="gl">제품 요약 배치</div><div class="seg" data-opt="pd"><button data-v="a">A 대형 요약</button><button data-v="b">B 갤러리 카드</button></div><p class="bhelp">A는 요약·사양·사진을 나누고, B는 갤러리 옆에 정보를 모읍니다. B에서는 ‘구석구석 보기’를 숨깁니다.</p></div>
     <div class="grp"><div class="gl">상세 페이지 색조</div><div class="seg" data-opt="pdmode"><button data-v="dark">다크</button><button data-v="light">화이트</button></div><p class="bhelp">상단 제품 영역과 헤더 글자색에 함께 적용됩니다.</p></div>
@@ -1892,7 +1920,7 @@ const IMG = n => IMGDATA[n];
 const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => [...r.querySelectorAll(s)];
 const B = document.body;
-const state = {herodim:'0', hero:'a', count:'on', brands:'on', spot:'on', main:'3', maindark:'off', about:'a', cat:'1', inq:'1', foot:'1', accent:'green', btn:'round', photo:'mono', condf:'on', mkf:'on', heropos:'left', pnav:'on', pd:'a', pdblk:'a', pdmode:'dark', pdcond:'on', cpage:'on', head:'c', herovid: SITE.heroVideo, hcbg:'off', hcbgimg:'img/p05.jpg', infobg:'img/p05.jpg', info:'card', biz:'dark', hist:'rows', faq:'list', alInfo:'left', alGreet:'center', alBiz:'center', alHist:'center', alFaq:'left', alLoc:'center', alPd1:'left', alPdDet:'center', alPdFaq:'left', cnt:'products,new,categories,makers', since:''};
+const state = {herodim:'0', hero:'a', count:'on', brands:'on', spot:'on', main:'3', maindark:'off', about:'a', cat:'1', inq:'1', foot:'1', accent:'green', btn:'round', photo:'mono', condf:'on', mkf:'on', plist:'card', heropos:'left', pnav:'on', pd:'a', pdblk:'a', pdmode:'dark', pdcond:'on', cpage:'on', head:'c', herovid: SITE.heroVideo, hcbg:'off', hcbgimg:'img/p05.jpg', infobg:'img/p05.jpg', info:'card', biz:'dark', hist:'rows', faq:'list', alInfo:'left', alGreet:'center', alBiz:'center', alHist:'center', alFaq:'left', alLoc:'center', alPd1:'left', alPdDet:'center', alPdFaq:'left', cnt:'products,new,categories,makers', since:''};
 const catName = id => (CATS.find(c => c.id === id) || {}).ko;
 state.feng = SITE.feng;
 const countIn = id => P.filter(p => p.cat === id).length;
@@ -2067,14 +2095,21 @@ function renderProducts() {
   $('#condGroup').innerHTML = '<label>구분</label>' + conds.map(c => `<button type="button" class="chip${flt.cond===c?' on':''}" data-cond="${c}">${c}</button>`).join('');
   $('#makerGroup').innerHTML = '<label>제조사</label>' + makers.map(c => `<button type="button" class="chip${flt.mk===c?' on':''}" data-mk="${c}">${c}</button>`).join('');
   const list = P.filter(p => (flt.cat==='all'||p.cat===flt.cat) && (flt.cond==='전체'||p.c===flt.cond) && (flt.mk==='전체'||p.mk===flt.mk));
-  const shown = list.slice(0, MAX);
-  $('#shown').innerHTML = `조건 ${list.length}개 중 <b>${shown.length}개</b> 표시${list.length > MAX ? ' · 나머지는 리스트 페이지에서' : ''}`;
-  $('#grid').innerHTML = shown.length ? shown.map(p => `<article class="card">
+  const mode = state.plist === 'list' ? 'list' : state.plist === 'hcard' ? 'hcard' : 'card';
+  const cap = mode === 'list' ? list.length : Math.min(MAX, list.length);
+  const shown = list.slice(0, cap);
+  $('#shown').innerHTML = `조건 ${list.length}개 중 <b>${shown.length}개</b> 표시${list.length > shown.length ? ' · 나머지는 리스트 페이지에서' : ''}`;
+  $('#grid').className = mode === 'list' ? 'plist' : mode === 'hcard' ? 'grid4 hz' : 'grid4';
+  $('#grid').innerHTML = !shown.length ? `<p class="empty">조건에 맞는 제품이 없습니다. 필터를 바꾸거나 원하시는 제품을 문의해 주세요.</p>`
+    : mode === 'list' ? shown.map(p => `<article class="lrow" tabindex="0" role="link" aria-label="${p.m} 상세 보기">
+    <span class="lthumb" data-pdopen="${p.img}"><span class="cond${p.c==='신품'?' new':''}">${p.c}</span><img class="photo" src="${IMG(p.img)}" alt="${p.m}" loading="lazy"></span>
+    <span class="lmain"><b data-pdopen="${p.img}">${p.m}</b><span class="ls">${p.s}</span><span class="lmeta">${p.mk} · ${catName(p.cat)}</span></span>
+    <span class="lside"><span class="ldate">${p.d}</span><button type="button" data-ask="${p.m}">문의 →</button></span></article>`).join('')
+    : shown.map(p => `<article class="card${mode === 'hcard' ? ' hz' : ''}">
     <div class="im" data-pdopen="${p.img}" tabindex="0" role="link" aria-label="${p.m} 상세 보기"><span class="cond${p.c==='신품'?' new':''}">${p.c}</span><img class="photo" src="${IMG(p.img)}" alt="${p.m}" loading="lazy"></div>
     <div class="t"><b data-pdopen="${p.img}">${p.m}</b><span>${p.mk}</span></div><p class="s">${p.s}</p>
-    <div class="f"><span>${catName(p.cat)} · ${p.d}</span><button type="button" data-ask="${p.m}">문의 →</button></div></article>`).join('')
-    : `<p class="empty">조건에 맞는 제품이 없습니다. 필터를 바꾸거나 원하시는 제품을 문의해 주세요.</p>`;
-  $('#moreRow').hidden = list.length <= MAX;
+    <div class="f"><span>${catName(p.cat)} · ${p.d}</span><button type="button" data-ask="${p.m}">문의 →</button></div></article>`).join('');
+  $('#moreRow').hidden = list.length <= shown.length;
 }
 $('#products').addEventListener('click', e => {
   const t = e.target.closest('[data-cat],[data-cond],[data-mk]'); if (!t || t === document.body) return;
@@ -2146,7 +2181,7 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => { if (e.key !== 'Enter') return; const g = e.target.closest?.('[data-gocat],.pc,[data-pdopen]'); if (g) g.click(); });
 
 /* ---------- 템플릿 설정 ---------- */
-const OPT_KO = {hero:{a:'A',b:'B',c:'C',d:'D',e:'E'},count:{on:'표시',off:'숨김'},brands:{on:'표시',off:'숨김'},spot:{on:'표시',off:'숨김'},main:{3:'3개 · 지그재그',4:'4개+ 캐러셀'},maindark:{on:'다크',off:'라이트'},about:{a:'A 기본',b:'B 분할',c:'C 갤러리',d:'D 지표'},cat:{1:'1 리스트',2:'2 카드',3:'3 다크',4:'4 이미지'},condf:{on:'구분 표시',off:'숨김'},mkf:{on:'제조사 표시',off:'숨김'},inq:{1:'1 팝업',2:'2 하단섹션'},foot:{1:'1 정보형',2:'2 한 줄형'},pd:{a:'A',b:'B'},pdblk:{a:'셀+스트립',b:'카드형'},pdmode:{dark:'다크',light:'화이트'},pdcond:{on:'ON',off:'OFF'},btn:{round:'라운드',square:'각진'},photo:{mono:'흑백',color:'컬러'},heropos:{left:'좌측',center:'중앙',right:'우측'},pnav:{on:'표시',off:'숨김'},hcbg:{off:'단색',on:'사진'},cpage:{on:'페이지 사용',off:'숨김'},head:{a:'A 다크',c:'C 화이트',e:'E 라이트'},info:{card:'A 요약카드',banner:'B 사진 배너'},biz:{cards:'A 카드+칩',dark:'B 다크 그리드',bento:'C 이미지 베이토'},hist:{tl:'A 세로 타임라인',era:'B 시대별 리스트',rows:'C 날짜 목록'},faq:{acc:'A 아코디언',list:'B 리스트형'},alInfo:{left:'좌측',center:'중앙',right:'우측'},alGreet:{left:'좌측',center:'중앙',right:'우측'},alBiz:{left:'좌측',center:'중앙',right:'우측'},alHist:{left:'좌측',center:'중앙',right:'우측'},alFaq:{left:'좌측',center:'중앙',right:'우측'},alLoc:{left:'좌측',center:'중앙',right:'우측'},alPd1:{left:'좌측',center:'중앙',right:'우측'},alPdDet:{left:'좌측',center:'중앙',right:'우측'},alPdFaq:{left:'좌측',center:'중앙',right:'우측'}};
+const OPT_KO = {hero:{a:'A',b:'B',c:'C',d:'D',e:'E'},count:{on:'표시',off:'숨김'},brands:{on:'표시',off:'숨김'},spot:{on:'표시',off:'숨김'},main:{3:'3개 · 지그재그',4:'4개+ 캐러셀'},maindark:{on:'다크',off:'라이트'},about:{a:'A 기본',b:'B 분할',c:'C 갤러리',d:'D 지표'},cat:{1:'1 리스트',2:'2 카드',3:'3 다크',4:'4 이미지'},condf:{on:'구분 표시',off:'숨김'},mkf:{on:'제조사 표시',off:'숨김'},plist:{card:'카드형',hcard:'가로 카드형',list:'리스트형'},inq:{1:'1 팝업',2:'2 하단섹션'},foot:{1:'1 정보형',2:'2 한 줄형'},pd:{a:'A',b:'B'},pdblk:{a:'셀+스트립',b:'카드형'},pdmode:{dark:'다크',light:'화이트'},pdcond:{on:'ON',off:'OFF'},btn:{round:'라운드',square:'각진'},photo:{mono:'흑백',color:'컬러'},heropos:{left:'좌측',center:'중앙',right:'우측'},pnav:{on:'표시',off:'숨김'},hcbg:{off:'단색',on:'사진'},cpage:{on:'페이지 사용',off:'숨김'},head:{a:'A 다크',c:'C 화이트',e:'E 라이트'},info:{card:'A 요약카드',banner:'B 사진 배너'},biz:{cards:'A 카드+칩',dark:'B 다크 그리드',bento:'C 이미지 베이토'},hist:{tl:'A 세로 타임라인',era:'B 시대별 리스트',rows:'C 날짜 목록'},faq:{acc:'A 아코디언',list:'B 리스트형'},alInfo:{left:'좌측',center:'중앙',right:'우측'},alGreet:{left:'좌측',center:'중앙',right:'우측'},alBiz:{left:'좌측',center:'중앙',right:'우측'},alHist:{left:'좌측',center:'중앙',right:'우측'},alFaq:{left:'좌측',center:'중앙',right:'우측'},alLoc:{left:'좌측',center:'중앙',right:'우측'},alPd1:{left:'좌측',center:'중앙',right:'우측'},alPdDet:{left:'좌측',center:'중앙',right:'우측'},alPdFaq:{left:'좌측',center:'중앙',right:'우측'}};
 const ACCENT_KO = {orange:'코퍼',lime:'라임',gold:'골드',crimson:'크림슨',red:'레드',blue:'블루',purple:'퍼플',green:'그린'};
 const ACCENT_PRESET_HEX = {orange:'#C47A3C',lime:'#D4F835',gold:'#E69A00',crimson:'#C8102E',red:'#E03131',blue:'#2563EB',purple:'#7C3AED',green:'#16A34A'};
 const isHexColor = v => /^#?[0-9a-fA-F]{6}$/.test(String(v || '').trim());
@@ -2211,6 +2246,7 @@ $('#bld').addEventListener('click', e => {
   apply();
   if (k === 'spot') renderSpot();
   if (k === 'main' || k === 'maindark') renderMain();
+  if (k === 'plist') renderProducts();
   if (k === 'hist') renderHistPanel();
   if (k === 'inq') placeInq();
   if (k === 'cpage' && state.cpage === 'off' && document.body.dataset.page === 'company') { document.body.dataset.page = 'home'; placeInq(); window.scrollTo(0, 0); }
