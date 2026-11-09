@@ -156,13 +156,18 @@ body[data-hero="d"] #heroD{display:flex;flex-direction:column;min-height:100svh}
 .ef-row{overflow:hidden}
 .ef-track{display:flex;width:max-content;will-change:transform}
 .ef-item{position:relative;flex:none;height:240px;border-radius:20px;overflow:hidden;background:var(--paper-3);margin-right:16px}
-.ef-row .ef-item:nth-child(4n+1){width:400px}
-.ef-row .ef-item:nth-child(4n+2){width:300px}
-.ef-row .ef-item:nth-child(4n+3){width:360px}
-.ef-row .ef-item:nth-child(4n+4){width:330px}
+/* 행별 카드 폭 시퀀스: 윗줄 400/300/360/330 · 아랫줄 290/380/260/340 (두 줄이 서로 다른 조합) */
+.ef-row.r1 .ef-item:nth-child(4n+1){width:400px}
+.ef-row.r1 .ef-item:nth-child(4n+2){width:300px}
+.ef-row.r1 .ef-item:nth-child(4n+3){width:360px}
+.ef-row.r1 .ef-item:nth-child(4n+4){width:330px}
+.ef-row.r2 .ef-item:nth-child(4n+1){width:290px}
+.ef-row.r2 .ef-item:nth-child(4n+2){width:380px}
+.ef-row.r2 .ef-item:nth-child(4n+3){width:260px}
+.ef-row.r2 .ef-item:nth-child(4n+4){width:340px}
 .ef-row.r1 .ef-track{animation:efR 46s linear infinite}
-/* 아랫줄: 윗줄과 같은 방향·속도(efR 46s)로 흐르며 180px(약 반 카드) 우측 스태거를 항상 유지 (카드폭 합 1454px 기준 -5.69s) */
-.ef-row.r2 .ef-track{animation:efR 46s linear infinite;animation-delay:-5.69s;transform:translateX(-1274px)}
+/* 아랫줄: 카드 폭 시퀀스를 윗줄과 다르게(합 1270px, 주기 1334px) 하고, 윗줄과 같은 화면 속도(1454px/46s = 1334px/42.2s)로 흐르며 약 반 카드(180px) 스태거 유지 (-5.69s) */
+.ef-row.r2 .ef-track{animation:efR 42.2s linear infinite;animation-delay:-5.69s}
 @keyframes efR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 @keyframes efL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.ef-track{animation:none!important}}
@@ -626,7 +631,7 @@ body[data-pnav="off"] .pagenav{display:none!important}
 .bbody{padding:0 2px 14px;display:grid}
 .bbody .grp:first-of-type{margin-top:0;border-top:0;padding-top:0}
 .bld h5{padding-bottom:10px}
-@media (max-width:860px){#heroE .egrid{grid-template-columns:1fr;min-height:0;gap:28px;padding:110px 20px 36px}.eflow{gap:10px;padding:8px 0}.ef-item{height:160px;border-radius:14px;margin-right:10px}.ef-row .ef-item:nth-child(4n+1){width:280px}.ef-row .ef-item:nth-child(4n+2){width:210px}.ef-row .ef-item:nth-child(4n+3){width:250px}.ef-row .ef-item:nth-child(4n+4){width:230px}.ef-row.r2 .ef-track{animation-delay:-2.73s;transform:translateX(-950px)}}
+@media (max-width:860px){#heroE .egrid{grid-template-columns:1fr;min-height:0;gap:28px;padding:110px 20px 36px}.eflow{gap:10px;padding:8px 0}.ef-item{height:160px;border-radius:14px;margin-right:10px}.ef-row.r1 .ef-item:nth-child(4n+1){width:280px}.ef-row.r1 .ef-item:nth-child(4n+2){width:210px}.ef-row.r1 .ef-item:nth-child(4n+3){width:250px}.ef-row.r1 .ef-item:nth-child(4n+4){width:230px}.ef-row.r2 .ef-item:nth-child(4n+1){width:200px}.ef-row.r2 .ef-item:nth-child(4n+2){width:250px}.ef-row.r2 .ef-item:nth-child(4n+3){width:180px}.ef-row.r2 .ef-item:nth-child(4n+4){width:230px}.ef-row.r2 .ef-track{animation-duration:40.98s;animation-delay:-5.47s}}
 
 /* ===== E5 · 업체 인사 C(갤러리) / D(지표) 타입 ===== */
 .about-c,.about-d{display:none}
@@ -1380,7 +1385,7 @@ body[data-page="resources"] #resources,body[data-page="support"] #support{displa
   </div>
 </section>
 
-<!-- ============ HERO E · 라이트 흐름 갤러리형 (2행 스태거 마퀴) ============ -->
+<!-- ============ HERO E · 라이트 흐름 갤러리형 (2행 마퀴 · 행별 카드 폭 다름) ============ -->
 <section class="hero" id="heroE" aria-label="메인 비주얼 E">
   <div class="egrid">
     <div class="etxt">
@@ -2134,7 +2139,7 @@ function renderCats() {
   $('#cat4Items').innerHTML = CATS.map((c,i) => `<button type="button" class="c4item${i===0?' on':''}" data-gocat="${c.id}" tabindex="0" role="link" aria-label="${c.ko} 바로가기"><span class="c4img"><img class="photo" src="${IMG(c.img)}" alt="${c.ko}" loading="lazy"></span><span class="c4name">${c.ko}</span></button>`).join('');
 }
 
-/* ---------- 히어로 E 흐름 갤러리 (2행 마퀴 · 같은 방향 흐름, 아랫줄 180px 우측 스태거 고정) ---------- */
+/* ---------- 히어로 E 흐름 갤러리 (2행 마퀴 · 윗줄/아랫줄 카드 폭 시퀀스를 다르게, 같은 화면 속도, 아랫줄 약 반 카드 스태거) ---------- */
 const E_TOP = ['p01','p03','p05','p08'], E_BOT = ['p04','p06','p02','p09'];
 function efItems(imgs, video) {
   const one = imgs.map((n,i) => '<figure class="ef-item">' + (video && i === 0 ? '<video class="hv" muted loop playsinline autoplay hidden></video>' : '') + '<img class="photo" src="' + IMG(n) + '" alt=""></figure>').join('');
