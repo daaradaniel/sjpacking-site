@@ -145,14 +145,14 @@ body[data-hero="d"] #heroD{display:flex;flex-direction:column;min-height:100svh}
 #heroA .bg:has(.bgv:not([hidden]))::after,#heroD .bg:has(.bgv:not([hidden]))::after{content:none}
 #heroD .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,17,20,.78) 0%,rgba(14,17,20,.42) 55%,rgba(14,17,20,.3) 100%)}
 #heroD .inner{position:relative;width:100%;flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:150px;padding-bottom:90px}
-#heroD h1{font-size:clamp(44px,7.4vw,120px)}
+#heroD h1{font-size:clamp(21px,calc((100vw - 60px)*.0761),105px)}
 #heroD .lead{color:#B9BEC3}
 
 /* --- 히어로 텍스트 위치 (좌측/중앙/우측) --- */
 /* ---- HERO E : 라이트 흐름 갤러리 (연한 단색 배경 + 2행 양방향 마퀴) ---- */
 #heroE{background:var(--paper-2);color:var(--text)}
 #heroE .egrid{display:grid;grid-template-columns:minmax(340px,44%) minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,56px);min-height:100svh;padding-top:96px;padding-bottom:56px;padding-left:max(20px,calc((100% - var(--wrap))/2 + 20px))}
-#heroE .etxt h1{font-size:clamp(40px,4.6vw,68px);line-height:1.06;letter-spacing:-.04em}
+#heroE .etxt h1{font-size:clamp(30px,4.6vw,68px);line-height:1.06;letter-spacing:-.04em}
 #heroE .etxt .lead{color:var(--mute);max-width:540px}
 #heroE .etxt .ctas{margin-top:34px}
 .eflow{overflow:hidden;display:grid;gap:16px;padding:24px 0}
@@ -179,7 +179,7 @@ body[data-heropos="right"] #heroB .lead,body[data-heropos="right"] #heroC .lead,
 body[data-heropos="right"] #heroA .inner,body[data-heropos="right"] #heroD .inner{align-items:flex-end;text-align:right}
 body[data-heropos="center"] #heroA .ctas,body[data-heropos="center"] #heroD .ctas,body[data-heropos="center"] #heroB .ctas,body[data-heropos="center"] #heroC .ctas,body[data-heropos="center"] #heroE .ctas{justify-content:center}
 body[data-heropos="right"] #heroA .ctas,body[data-heropos="right"] #heroD .ctas,body[data-heropos="right"] #heroB .ctas,body[data-heropos="right"] #heroC .ctas,body[data-heropos="right"] #heroE .ctas{justify-content:flex-end}
-body[data-heropos="center"] #heroB .inner,body[data-heropos="center"] #heroC .inner{grid-template-columns:1fr;justify-items:center;text-align:center;gap:56px}
+body[data-heropos="center"] #heroB .inner,body[data-heropos="center"] #heroC .inner{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;gap:56px}
 body[data-heropos="center"] #heroB .collage,body[data-heropos="center"] #heroC .fcard{width:100%}
 body[data-heropos="center"] #heroC .mini-stats{justify-content:center}
 body[data-heropos="right"] #heroC .mini-stats{justify-content:flex-end}
@@ -192,7 +192,7 @@ body[data-heropos="right"] #heroB .collage,body[data-heropos="right"] #heroC .fc
 @keyframes settle{to{transform:scale(1)}}
 #heroA .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,17,20,.5) 0%,rgba(14,17,20,.12) 40%,rgba(14,17,20,.9) 100%)}
 #heroA .inner{position:relative;width:100%;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding-top:150px}
-#heroA h1{font-size:clamp(44px,7.4vw,120px)}
+#heroA h1{font-size:clamp(21px,calc((100vw - 60px)*.0761),105px)}
 #heroA .lead{color:#B9BEC3}
 #heroA .stats{margin-top:48px;width:100%}
 #heroA .brands{position:relative;margin-top:auto}
@@ -201,8 +201,8 @@ body[data-count="off"][data-brands="off"] #heroA .inner{justify-content:center;p
 #heroB .stats{margin-bottom:0}
 
 /* ---- HERO B : collage ---- */
-#heroB .inner{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;padding-top:170px;padding-bottom:70px;align-items:center}
-#heroB h1{font-size:clamp(44px,7vw,104px);line-height:1.02}
+#heroB .inner{display:grid;grid-template-columns:minmax(0,1fr) 1.05fr;gap:64px;padding-top:170px;padding-bottom:70px;align-items:center}
+#heroB h1{font-size:clamp(42px,7vw,104px);line-height:1.02}
 #heroB h1 .lat{font-family:var(--f-latin);font-stretch:70%;font-weight:800;letter-spacing:0}
 .collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:280px 210px;gap:10px}
 .collage figure{overflow:hidden;position:relative}
@@ -217,8 +217,8 @@ body[data-count="off"][data-brands="off"] #heroA .inner{justify-content:center;p
 body[data-hcbg="off"] #heroC .cbg{display:none}
 
 #heroC .wm{position:absolute;left:-30px;bottom:-60px;font-family:var(--f-latin);font-stretch:70%;font-weight:800;font-size:340px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(236,238,240,.07);pointer-events:none}
-#heroC .inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:64px;padding-top:110px;padding-bottom:110px;align-items:center}
-#heroC h1{font-size:clamp(44px,5.8vw,84px)}
+#heroC .inner{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;padding-top:110px;padding-bottom:110px;align-items:center}
+#heroC h1{font-size:clamp(37px,5.8vw,84px)}
 .mini-stats{display:flex;gap:0;margin-top:52px;border-top:1px solid var(--line-d);padding-top:24px}
 .mini-stats div{padding:0 30px;border-left:1px solid var(--line-d)}
 .mini-stats div:first-child{padding-left:0;border:0}
@@ -562,10 +562,10 @@ body[data-foot="1"] #foot1,body[data-foot="2"] #foot2{display:block}
   #heroA .inner{padding-top:120px;padding-bottom:20px;justify-content:flex-end}
   #heroD{min-height:100svh}
   #heroD .inner{padding-top:120px;padding-bottom:60px;justify-content:center}
-  #heroD h1{font-size:clamp(40px,5.6vw,80px)}
+  #heroD h1{font-size:clamp(21px,calc((100vw - 60px)*.0576),79px)}
   #heroD .lead{margin-top:16px;font-size:15.5px}
   #heroD .ctas{margin-top:22px}
-  #heroA h1{font-size:clamp(40px,5.6vw,80px)}
+  #heroA h1{font-size:clamp(21px,calc((100vw - 60px)*.0576),79px)}
   #heroA .lead{margin-top:16px;font-size:15.5px}
   #heroA .ctas{margin-top:22px}
   #heroA .stats{margin-top:28px}
@@ -628,7 +628,7 @@ body[data-pnav="off"] .pagenav{display:none!important}
 .bbody{padding:0 2px 14px;display:grid}
 .bbody .grp:first-of-type{margin-top:0;border-top:0;padding-top:0}
 .bld h5{padding-bottom:10px}
-@media (max-width:860px){#heroE .egrid{grid-template-columns:1fr;min-height:0;gap:28px;padding:110px 20px 36px}.eflow{gap:10px;padding:8px 0}.ef-item{height:160px;border-radius:14px;margin-right:10px}.ef-row .ef-item:nth-child(4n+1){width:280px}.ef-row .ef-item:nth-child(4n+2){width:210px}.ef-row .ef-item:nth-child(4n+3){width:250px}.ef-row .ef-item:nth-child(4n+4){width:230px}.ef-row.r2 .ef-track{margin-left:-395px}}
+@media (max-width:860px){#heroE .egrid{grid-template-columns:minmax(0,1fr);min-height:0;gap:28px;padding:110px 20px 36px}.eflow{gap:10px;padding:8px 0}.ef-item{height:160px;border-radius:14px;margin-right:10px}.ef-row .ef-item:nth-child(4n+1){width:280px}.ef-row .ef-item:nth-child(4n+2){width:210px}.ef-row .ef-item:nth-child(4n+3){width:250px}.ef-row .ef-item:nth-child(4n+4){width:230px}.ef-row.r2 .ef-track{margin-left:-395px}}
 
 /* ===== E5 · 업체 인사 C(갤러리) / D(지표) 타입 ===== */
 .about-c,.about-d{display:none}
@@ -1269,6 +1269,12 @@ body[data-page="resources"] #resources,body[data-page="support"] #support{displa
   .lrow .lside{grid-column:1/-1;justify-self:start}
 }
 
+/* 히어로 모바일 쌓임 — 텍스트 트랙 팽창 방지(공백 없는 긴 제목도 줄바꿈) */
+@media (max-width:860px){#heroB .inner,#heroC .inner{grid-template-columns:minmax(0,1fr)}}
+
+/* B타입 협폭 구간(861-935px) - 줄당 7자 용량 유지용 미세 스케일 */
+@media (min-width:861px) and (max-width:935px){#heroB h1{font-size:6.4vw}}
+
 .skip-content{position:fixed;left:16px;top:-80px;z-index:20000;padding:12px 18px;background:#fff;color:#0e1114;border:2px solid currentColor}.skip-content:focus{top:12px}
 .catalog-index{max-width:1280px;margin:40px auto 0;padding:24px 0;border-top:1px solid #cdd1d5;color:var(--text)}.catalog-index h2{font-size:18px;margin-bottom:8px}.catalog-index p{font-size:14px;color:#51565d}.catalog-index ul{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;padding:18px 0 0}.catalog-index a{font-size:14px;text-decoration:underline;text-underline-offset:4px}a[data-pdopen]{display:block;color:inherit;text-decoration:none}
 </style></head>
@@ -1321,7 +1327,7 @@ body[data-page="resources"] #resources,body[data-page="support"] #support{displa
   <div class="wrap inner">
     <div>
       <span class="eyebrow">RUBBER PACKING · O-RING · IMPORTED SEAL</span>
-      <h1 style="margin-top:22px">현장에 필요한 패킹·씰을<br><em>정직하게 안내합니다</em>.</h1>
+      <h1 style="margin-top:22px">패킹·씰을<br><em>정직하게 안내</em></h1>
       <p class="lead">고무패킹·오링·회전씰·바이톤씰과 발카·사카가미 수입 제품. 구로 온라인 전시장에서 등록된 조건 그대로 확인하세요.</p>
       <div class="ctas"><a href="#products" class="btn btn-accent">제품 보기 <span class="arrow">→</span></a><a href="#" class="btn btn-ghost-d" data-open-inq>견적 문의</a></div>
     </div>
@@ -1350,7 +1356,7 @@ body[data-page="resources"] #resources,body[data-page="support"] #support{displa
   <div class="wrap inner">
     <div>
       <span class="eyebrow">PACKING & SEAL SOURCING · SJ PACKING</span>
-      <h1 style="margin-top:22px">현장에 필요한 패킹·씰을<br><em>정직하게 안내합니다</em>.</h1>
+      <h1 style="margin-top:22px">현장의 패킹·씰<br><em>정직하게 안내</em></h1>
       <p class="lead">고무패킹·오링·회전씰·바이톤씰과 발카·사카가미 수입 제품. 구로 온라인 전시장에서 등록된 조건 그대로 확인하세요.</p>
       <div class="ctas"><a href="#featured" class="btn btn-accent">대표 제품 살펴보기 <span class="arrow">↓</span></a><a href="#products" class="btn btn-ghost-d">전체 제품 보기 <span class="arrow">↗</span></a></div>
       <div class="mini-stats" data-count-block>
@@ -1387,7 +1393,7 @@ body[data-page="resources"] #resources,body[data-page="support"] #support{displa
   <div class="egrid">
     <div class="etxt">
       <span class="eyebrow">INDUSTRIAL PACKING & SEAL · SEOUL, KOREA</span>
-      <h1 style="margin-top:22px">현장에 필요한 패킹·씰을<br><em>정직하게 안내합니다</em>.</h1>
+      <h1 style="margin-top:22px">현장에 필요한<br>패킹·씰을<br><em>정직하게 안내</em></h1>
       <p class="lead">고무패킹·오링·회전씰·바이톤씰과 발카·사카가미 수입 제품. 구로 온라인 전시장에서 등록된 조건 그대로 확인하세요.</p>
       <div class="ctas"><a href="#products" class="btn btn-ink">전체 제품 보기 <span class="arrow">→</span></a><a href="#" class="btn btn-line" data-open-inq>견적 문의</a></div>
     </div>
